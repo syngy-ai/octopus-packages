@@ -313,6 +313,11 @@ export interface BasePinOKVoArtifactDetail {
   trace_id?: string;
 }
 
+export interface BasePinOKVoArtifactDownloadURLResponse {
+  data?: VoArtifactDownloadURLResponse;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoArtifactSummaryResponse {
   data?: VoArtifactSummaryResponse;
   trace_id?: string;
@@ -388,6 +393,11 @@ export interface BasePinOKVoDigiEmployee {
   trace_id?: string;
 }
 
+export interface BasePinOKVoDigiEmployeeKBAccess {
+  data?: VoDigiEmployeeKBAccess;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoEndpointTypeConfigSchemaResponse {
   data?: VoEndpointTypeConfigSchemaResponse;
   trace_id?: string;
@@ -405,6 +415,11 @@ export interface BasePinOKVoExternalUserVerificationFlowDetail {
 
 export interface BasePinOKVoFileNode {
   data?: VoFileNode;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoGetDigiEmployeeTeamSkillsResponse {
+  data?: VoGetDigiEmployeeTeamSkillsResponse;
   trace_id?: string;
 }
 
@@ -598,6 +613,11 @@ export interface BasePinOKVoListRecentsResponse {
   trace_id?: string;
 }
 
+export interface BasePinOKVoListReportingNeighborsResponse {
+  data?: VoListReportingNeighborsResponse;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoListSelectableJobTagsResponse {
   data?: VoListSelectableJobTagsResponse;
   trace_id?: string;
@@ -628,8 +648,38 @@ export interface BasePinOKVoListTeamComputeImagesResponse {
   trace_id?: string;
 }
 
+export interface BasePinOKVoListTeamDevicesResponse {
+  data?: VoListTeamDevicesResponse;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoListTeamExternalUserTagsResponse {
   data?: VoListTeamExternalUserTagsResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoListTeamKbDirectoriesResponse {
+  data?: VoListTeamKbDirectoriesResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoListTeamKbSyncBindingsResponse {
+  data?: VoListTeamKbSyncBindingsResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoListTeamKbSyncJobsResponse {
+  data?: VoListTeamKbSyncJobsResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoListTeamMcpTunnelBindingsResponse {
+  data?: VoListTeamMcpTunnelBindingsResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoListTeamMcpTunnelsResponse {
+  data?: VoListTeamMcpTunnelsResponse;
   trace_id?: string;
 }
 
@@ -743,8 +793,33 @@ export interface BasePinOKVoTeamBillingSummaryResponse {
   trace_id?: string;
 }
 
+export interface BasePinOKVoTeamDevice {
+  data?: VoTeamDevice;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoTeamIntegrationVO {
   data?: VoTeamIntegrationVO;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoTeamKbDirectory {
+  data?: VoTeamKbDirectory;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoTeamKbSyncBinding {
+  data?: VoTeamKbSyncBinding;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoTeamKbSyncBootstrapAccessResponse {
+  data?: VoTeamKbSyncBootstrapAccessResponse;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoTeamMcpTunnel {
+  data?: VoTeamMcpTunnel;
   trace_id?: string;
 }
 
@@ -783,8 +858,18 @@ export interface BasePinOKVoTenantAdminDigiWorkerAutoCreateThresholdResponse {
   trace_id?: string;
 }
 
+export interface BasePinOKVoTenantAdminDigiworkerDebugConfig {
+  data?: VoTenantAdminDigiworkerDebugConfig;
+  trace_id?: string;
+}
+
 export interface BasePinOKVoTenantAdminSettlementConfig {
   data?: VoTenantAdminSettlementConfig;
+  trace_id?: string;
+}
+
+export interface BasePinOKVoValidateTeamKbSyncTargetResponse {
+  data?: VoValidateTeamKbSyncTargetResponse;
   trace_id?: string;
 }
 
@@ -1378,6 +1463,11 @@ export interface VoArtifactDetail {
   title?: string;
 }
 
+export interface VoArtifactDownloadURLResponse {
+  downloadUrl?: string;
+  expireAt?: string;
+}
+
 export interface VoArtifactItem {
   artifactId?: string;
   channel?: string;
@@ -1753,6 +1843,25 @@ export interface VoCreateStationRequest {
   title?: string;
 }
 
+export interface VoCreateTeamKbDirectoryRequest {
+  path: string;
+}
+
+export interface VoCreateTeamKbSyncBindingRequest {
+  deviceId?: string;
+  sourceKind: string;
+  sourcePath: string;
+  targetDirectory: string;
+}
+
+export interface VoCreateTeamMcpTunnelRequest {
+  deviceId: string;
+  localEndpoint: string;
+  name: string;
+  provider: string;
+  publicEndpoint: string;
+}
+
 export interface VoCreateTeamRequest {
   bootstrapConversationId?: string;
   locale?: string;
@@ -1805,11 +1914,24 @@ export interface VoDigiEmployee {
   digiWorkerId?: string;
   hiredAt?: string;
   id?: string;
+  managerDigiEmployeeId?: string;
   skillsets?: VoSkillsetLite[];
   status?: string;
   teamId?: string;
   workloadCap?: number;
   workloadUsed?: number;
+}
+
+export interface VoDigiEmployeeKBAccess {
+  kbPaths?: string[];
+  mode?: string;
+}
+
+export interface VoDigiEmployeeTeamSkill {
+  description?: string;
+  id?: string;
+  name?: string;
+  title?: string;
 }
 
 export interface VoDigiWorker {
@@ -1960,6 +2082,10 @@ export interface VoFileNode {
   size?: number;
   type?: string;
   updated?: string;
+}
+
+export interface VoGetDigiEmployeeTeamSkillsResponse {
+  items?: VoDigiEmployeeTeamSkill[];
 }
 
 export interface VoHireDigiEmployeeRequest {
@@ -2168,6 +2294,9 @@ export interface VoListAdminStorageEntriesResponse {
 
 export interface VoListArtifactsResponse {
   items?: VoArtifactListItem[];
+  page?: number;
+  pageSize?: number;
+  total?: number;
 }
 
 export interface VoListCasesResponse {
@@ -2233,6 +2362,11 @@ export interface VoListRecentsResponse {
   items?: VoConversationMeta[];
 }
 
+export interface VoListReportingNeighborsResponse {
+  items?: VoReportingNeighborItem[];
+  self?: VoReportingNeighborSelf;
+}
+
 export interface VoListSelectableJobTagsResponse {
   items?: VoJobTagLite[];
 }
@@ -2259,8 +2393,32 @@ export interface VoListTeamComputeImagesResponse {
   items?: VoTeamComputeImageItem[];
 }
 
+export interface VoListTeamDevicesResponse {
+  items?: VoTeamDevice[];
+}
+
 export interface VoListTeamExternalUserTagsResponse {
   tags?: string[];
+}
+
+export interface VoListTeamKbDirectoriesResponse {
+  items?: VoTeamKbDirectory[];
+}
+
+export interface VoListTeamKbSyncBindingsResponse {
+  items?: VoTeamKbSyncBinding[];
+}
+
+export interface VoListTeamKbSyncJobsResponse {
+  items?: VoTeamKbSyncJob[];
+}
+
+export interface VoListTeamMcpTunnelBindingsResponse {
+  items?: VoTeamMcpTunnelBinding[];
+}
+
+export interface VoListTeamMcpTunnelsResponse {
+  items?: VoTeamMcpTunnel[];
 }
 
 export interface VoListTeamMembersResponse {
@@ -2375,6 +2533,12 @@ export interface VoPatchSkillsetRequest {
   name?: string;
 }
 
+export interface VoPatchTeamMcpTunnelRequest {
+  localEndpoint?: string;
+  name?: string;
+  publicEndpoint?: string;
+}
+
 export interface VoPatchTeamMembershipProfileRequest {
   avatarSourceType?: string;
   avatarStorageKey?: string;
@@ -2415,9 +2579,44 @@ export interface VoPostConversationHumanTurnResponse {
   turnId?: string;
 }
 
+export interface VoPutDigiEmployeeKBAccessRequest {
+  kbPaths?: string[];
+  mode: string;
+}
+
+export interface VoPutDigiEmployeeReportingLineRequest {
+  managerDigiEmployeeId?: string;
+}
+
+export interface VoPutDigiEmployeeTeamSkillsRequest {
+  skillIds?: string[];
+}
+
+export interface VoRegisterTeamDeviceRequest {
+  clientId: string;
+  clientType: string;
+  deviceName: string;
+  platformBaseUrl: string;
+}
+
 export interface VoRemoteTaskDeleteResponse {
   deleted?: boolean;
   id?: string;
+}
+
+export interface VoReportingNeighborItem {
+  avatar?: string;
+  digiEmployeeId?: string;
+  name?: string;
+  relationType?: string;
+  title?: string;
+}
+
+export interface VoReportingNeighborSelf {
+  avatar?: string;
+  digiEmployeeId?: string;
+  name?: string;
+  title?: string;
 }
 
 export interface VoRotateStationApiKeyResponse {
@@ -2559,6 +2758,19 @@ export interface VoTeamDeleteRequest {
   scope?: VoTeamRootScope;
 }
 
+export interface VoTeamDevice {
+  boundMcpTunnelsCount?: number;
+  clientId?: string;
+  clientType?: string;
+  deviceName?: string;
+  lastSeenAt?: string;
+  platformBaseUrl?: string;
+  registeredAt?: string;
+  status?: string;
+  teamDeviceId?: string;
+  teamId?: string;
+}
+
 export interface VoTeamIntegrationVO {
   agentId?: string;
   appType?: string;
@@ -2575,6 +2787,65 @@ export interface VoTeamIntegrationVO {
   syncStatus?: string;
   teamId?: string;
   updatedAt?: string;
+}
+
+export interface VoTeamKbDirectory {
+  createdAt?: string;
+  id?: string;
+  name?: string;
+  parentPath?: string;
+  path?: string;
+}
+
+export interface VoTeamKbSyncBinding {
+  bindingId?: string;
+  createdAt?: string;
+  deviceId?: string;
+  sourceKind?: string;
+  sourcePath?: string;
+  targetDirectory?: string;
+  teamId?: string;
+}
+
+export interface VoTeamKbSyncBootstrapAccessRequest {
+  deviceId: string;
+}
+
+export interface VoTeamKbSyncBootstrapAccessResponse {
+  accessToken?: string;
+  expiresAt?: string;
+  fileGatewayBaseUrl?: string;
+}
+
+export interface VoTeamKbSyncJob {
+  bindingId?: string;
+  createdAt?: string;
+  filesChanged?: number;
+  id?: string;
+  status?: string;
+  summary?: string;
+}
+
+export interface VoTeamMcpTunnel {
+  activatedAt?: string;
+  boundAgentsCount?: number;
+  deactivatedAt?: string;
+  deviceId?: string;
+  localEndpoint?: string;
+  mcpTunnelId?: string;
+  name?: string;
+  provider?: string;
+  publicEndpoint?: string;
+  status?: string;
+  teamId?: string;
+  updatedAt?: string;
+}
+
+export interface VoTeamMcpTunnelBinding {
+  agentId?: string;
+  agentName?: string;
+  createdAt?: string;
+  id?: string;
 }
 
 export interface VoTeamMembership {
@@ -2747,6 +3018,10 @@ export interface VoTenantAdminDigiWorkerAutoCreateThresholdResponse {
   overridden?: boolean;
 }
 
+export interface VoTenantAdminDigiworkerDebugConfig {
+  level?: string;
+}
+
 export interface VoTenantAdminLLMModelItem {
   id?: string;
   monthlyPoints?: number;
@@ -2884,6 +3159,16 @@ export interface VoUpsertFeishuIntegrationRequest {
   appId: string;
   /** 更新时留空表示保留原 Secret */
   appSecret?: string;
+}
+
+export interface VoValidateTeamKbSyncTargetRequest {
+  targetDirectory: string;
+}
+
+export interface VoValidateTeamKbSyncTargetResponse {
+  conflictPath?: string;
+  conflictReason?: string;
+  valid?: boolean;
 }
 
 export interface VoVerifyFeishuRequest {
@@ -5676,10 +5961,26 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary List artifacts
      * @request GET:/api/v1/teams/{teamId}/artifacts
      */
-    v1TeamsArtifactsDetail: (teamId: string, params: RequestParams = {}) =>
+    v1TeamsArtifactsDetail: (
+      teamId: string,
+      query?: {
+        /** Search artifact title */
+        q?: string;
+        /** Sort field, only completed_at is supported */
+        sort?: string;
+        /** Sort order, asc or desc */
+        order?: string;
+        /** Filter by generated digiEmployeeId */
+        employeeId?: string;
+        /** Page number, starting from 1 */
+        page?: number;
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<VoListArtifactsResponse, any>({
         path: `/api/v1/teams/${teamId}/artifacts`,
         method: "GET",
+        query: query,
         format: "json",
         ...params,
       }),
@@ -5714,6 +6015,27 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       this.request<VoArtifactDetail, any>({
         path: `/api/v1/teams/${teamId}/artifacts/${artifactId}`,
         method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Artifacts
+     * @name V1TeamsArtifactsItemsDownloadUrlCreate
+     * @summary Get artifact item download URL
+     * @request POST:/api/v1/teams/{teamId}/artifacts/{artifactId}/items/{itemId}/download-url
+     */
+    v1TeamsArtifactsItemsDownloadUrlCreate: (
+      teamId: string,
+      artifactId: string,
+      itemId: string,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoArtifactDownloadURLResponse, any>({
+        path: `/api/v1/teams/${teamId}/artifacts/${artifactId}/items/${itemId}/download-url`,
+        method: "POST",
         format: "json",
         ...params,
       }),
@@ -6208,6 +6530,58 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
+     * @tags Teams
+     * @name V1TeamsDevicesDetail
+     * @summary List team devices
+     * @request GET:/api/v1/teams/{teamId}/devices
+     */
+    v1TeamsDevicesDetail: (teamId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamDevicesResponse, any>({
+        path: `/api/v1/teams/${teamId}/devices`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsDevicesRegisterCreate
+     * @summary Register tentacle client in current team
+     * @request POST:/api/v1/teams/{teamId}/devices/register
+     */
+    v1TeamsDevicesRegisterCreate: (teamId: string, request: VoRegisterTeamDeviceRequest, params: RequestParams = {}) =>
+      this.request<VoTeamDevice, any>({
+        path: `/api/v1/teams/${teamId}/devices/register`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsDevicesDetail2
+     * @summary Get team device by id
+     * @request GET:/api/v1/teams/{teamId}/devices/{deviceId}
+     * @originalName v1TeamsDevicesDetail
+     * @duplicate
+     */
+    v1TeamsDevicesDetail2: (teamId: string, deviceId: string, params: RequestParams = {}) =>
+      this.request<VoTeamDevice, any>({
+        path: `/api/v1/teams/${teamId}/devices/${deviceId}`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
      * @tags Roster
      * @name V1TeamsDigiemployeesDetail
      * @summary List digiemployees
@@ -6285,6 +6659,88 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags Roster
+     * @name V1TeamsDigiemployeesKbAccessDetail
+     * @summary Get digiemployee knowledge base access
+     * @request GET:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/kb-access
+     */
+    v1TeamsDigiemployeesKbAccessDetail: (teamId: string, digiEmployeeId: string, params: RequestParams = {}) =>
+      this.request<VoDigiEmployeeKBAccess, any>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/kb-access`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
+     * @name V1TeamsDigiemployeesKbAccessUpdate
+     * @summary Put digiemployee knowledge base access
+     * @request PUT:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/kb-access
+     */
+    v1TeamsDigiemployeesKbAccessUpdate: (
+      teamId: string,
+      digiEmployeeId: string,
+      request: VoPutDigiEmployeeKBAccessRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoDigiEmployeeKBAccess, any>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/kb-access`,
+        method: "PUT",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
+     * @name V1TeamsDigiemployeesReportingLineUpdate
+     * @summary Put digiemployee reporting line
+     * @request PUT:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/reporting-line
+     */
+    v1TeamsDigiemployeesReportingLineUpdate: (
+      teamId: string,
+      digiEmployeeId: string,
+      request: VoPutDigiEmployeeReportingLineRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoDigiEmployee, any>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/reporting-line`,
+        method: "PUT",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
+     * @name V1TeamsDigiemployeesReportingNeighborsDetail
+     * @summary Get digiemployee reporting neighbors
+     * @request GET:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/reporting-neighbors
+     */
+    v1TeamsDigiemployeesReportingNeighborsDetail: (
+      teamId: string,
+      digiEmployeeId: string,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoListReportingNeighborsResponse, any>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/reporting-neighbors`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
      * @name V1TeamsDigiemployeesSkillsetsPartialUpdate
      * @summary Patch digiemployee skillsets (team user, team-scoped)
      * @request PATCH:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/skillsets
@@ -6337,6 +6793,45 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       this.request<VoStation, any>({
         path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/stations`,
         method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
+     * @name V1TeamsDigiemployeesTeamSkillsDetail
+     * @summary Get digiemployee team skills
+     * @request GET:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/team-skills
+     */
+    v1TeamsDigiemployeesTeamSkillsDetail: (teamId: string, digiEmployeeId: string, params: RequestParams = {}) =>
+      this.request<BasePinOKVoGetDigiEmployeeTeamSkillsResponse, BasePinErr>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/team-skills`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Roster
+     * @name V1TeamsDigiemployeesTeamSkillsUpdate
+     * @summary Put digiemployee team skills
+     * @request PUT:/api/v1/teams/{teamId}/digiemployees/{digiEmployeeId}/team-skills
+     */
+    v1TeamsDigiemployeesTeamSkillsUpdate: (
+      teamId: string,
+      digiEmployeeId: string,
+      request: VoPutDigiEmployeeTeamSkillsRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<BasePinOKVoGetDigiEmployeeTeamSkillsResponse, BasePinErr>({
+        path: `/api/v1/teams/${teamId}/digiemployees/${digiEmployeeId}/team-skills`,
+        method: "PUT",
         body: request,
         type: ContentType.Json,
         format: "json",
@@ -7009,6 +7504,154 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
+     * @tags Teams
+     * @name V1TeamsKbDirectoriesDetail
+     * @summary List team kb directories
+     * @request GET:/api/v1/teams/{teamId}/kb/directories
+     */
+    v1TeamsKbDirectoriesDetail: (teamId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamKbDirectoriesResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/directories`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbDirectoriesCreate
+     * @summary Create team kb directory
+     * @request POST:/api/v1/teams/{teamId}/kb/directories
+     */
+    v1TeamsKbDirectoriesCreate: (teamId: string, request: VoCreateTeamKbDirectoryRequest, params: RequestParams = {}) =>
+      this.request<VoTeamKbDirectory, any>({
+        path: `/api/v1/teams/${teamId}/kb/directories`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncBindingsDetail
+     * @summary List team kb sync bindings
+     * @request GET:/api/v1/teams/{teamId}/kb/sync-bindings
+     */
+    v1TeamsKbSyncBindingsDetail: (teamId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamKbSyncBindingsResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-bindings`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncBindingsCreate
+     * @summary Create team kb sync binding
+     * @request POST:/api/v1/teams/{teamId}/kb/sync-bindings
+     */
+    v1TeamsKbSyncBindingsCreate: (
+      teamId: string,
+      request: VoCreateTeamKbSyncBindingRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoTeamKbSyncBinding, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-bindings`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncBindingsValidateTargetCreate
+     * @summary Validate kb sync target directory
+     * @request POST:/api/v1/teams/{teamId}/kb/sync-bindings/validate-target
+     */
+    v1TeamsKbSyncBindingsValidateTargetCreate: (
+      teamId: string,
+      request: VoValidateTeamKbSyncTargetRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoValidateTeamKbSyncTargetResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-bindings/validate-target`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncBindingsDelete
+     * @summary Delete team kb sync binding
+     * @request DELETE:/api/v1/teams/{teamId}/kb/sync-bindings/{bindingId}
+     */
+    v1TeamsKbSyncBindingsDelete: (teamId: string, bindingId: string, params: RequestParams = {}) =>
+      this.request<VoSimpleOKResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-bindings/${bindingId}`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncBootstrapAccessCreate
+     * @summary Issue file gateway bootstrap access for tentacle kb sync
+     * @request POST:/api/v1/teams/{teamId}/kb/sync-bootstrap-access
+     */
+    v1TeamsKbSyncBootstrapAccessCreate: (
+      teamId: string,
+      request: VoTeamKbSyncBootstrapAccessRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoTeamKbSyncBootstrapAccessResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-bootstrap-access`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsKbSyncJobsDetail
+     * @summary List team kb sync jobs
+     * @request GET:/api/v1/teams/{teamId}/kb/sync-jobs
+     */
+    v1TeamsKbSyncJobsDetail: (teamId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamKbSyncJobsResponse, any>({
+        path: `/api/v1/teams/${teamId}/kb/sync-jobs`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
      * @tags User
      * @name V1TeamsLinktoolLoginCodesCreate
      * @summary Issue linktool login code for team scope
@@ -7019,6 +7662,145 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         path: `/api/v1/teams/${teamId}/linktool-login/codes`,
         method: "POST",
         type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsDetail
+     * @summary List team mcp tunnels
+     * @request GET:/api/v1/teams/{teamId}/mcp-tunnels
+     */
+    v1TeamsMcpTunnelsDetail: (teamId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamMcpTunnelsResponse, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsCreate
+     * @summary Create team mcp tunnel
+     * @request POST:/api/v1/teams/{teamId}/mcp-tunnels
+     */
+    v1TeamsMcpTunnelsCreate: (teamId: string, request: VoCreateTeamMcpTunnelRequest, params: RequestParams = {}) =>
+      this.request<VoTeamMcpTunnel, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels`,
+        method: "POST",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsDetail2
+     * @summary Get team mcp tunnel by id
+     * @request GET:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}
+     * @originalName v1TeamsMcpTunnelsDetail
+     * @duplicate
+     */
+    v1TeamsMcpTunnelsDetail2: (teamId: string, mcpTunnelId: string, params: RequestParams = {}) =>
+      this.request<VoTeamMcpTunnel, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsDelete
+     * @summary Delete team mcp tunnel
+     * @request DELETE:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}
+     */
+    v1TeamsMcpTunnelsDelete: (teamId: string, mcpTunnelId: string, params: RequestParams = {}) =>
+      this.request<VoSimpleOKResponse, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}`,
+        method: "DELETE",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsPartialUpdate
+     * @summary Patch team mcp tunnel
+     * @request PATCH:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}
+     */
+    v1TeamsMcpTunnelsPartialUpdate: (
+      teamId: string,
+      mcpTunnelId: string,
+      request: VoPatchTeamMcpTunnelRequest,
+      params: RequestParams = {},
+    ) =>
+      this.request<VoTeamMcpTunnel, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}`,
+        method: "PATCH",
+        body: request,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsActivateCreate
+     * @summary Activate team mcp tunnel
+     * @request POST:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}/activate
+     */
+    v1TeamsMcpTunnelsActivateCreate: (teamId: string, mcpTunnelId: string, params: RequestParams = {}) =>
+      this.request<VoTeamMcpTunnel, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}/activate`,
+        method: "POST",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsBindingsDetail
+     * @summary List team mcp tunnel bindings
+     * @request GET:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}/bindings
+     */
+    v1TeamsMcpTunnelsBindingsDetail: (teamId: string, mcpTunnelId: string, params: RequestParams = {}) =>
+      this.request<VoListTeamMcpTunnelBindingsResponse, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}/bindings`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Teams
+     * @name V1TeamsMcpTunnelsDeactivateCreate
+     * @summary Deactivate team mcp tunnel
+     * @request POST:/api/v1/teams/{teamId}/mcp-tunnels/{mcpTunnelId}/deactivate
+     */
+    v1TeamsMcpTunnelsDeactivateCreate: (teamId: string, mcpTunnelId: string, params: RequestParams = {}) =>
+      this.request<VoTeamMcpTunnel, any>({
+        path: `/api/v1/teams/${teamId}/mcp-tunnels/${mcpTunnelId}/deactivate`,
+        method: "POST",
         format: "json",
         ...params,
       }),
@@ -8460,6 +9242,40 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         path: `/tenant-admin/v1/digiemployees/${id}/force-fire`,
         method: "POST",
         body: request,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags TenantAdmin
+     * @name V1DigiworkerDebugConfigList
+     * @summary Get digiworker debug config (tenant admin, tenant-scoped)
+     * @request GET:/tenant-admin/v1/digiworker/debug-config
+     */
+    v1DigiworkerDebugConfigList: (params: RequestParams = {}) =>
+      this.request<BasePinOKVoTenantAdminDigiworkerDebugConfig, BasePinErr>({
+        path: `/tenant-admin/v1/digiworker/debug-config`,
+        method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags TenantAdmin
+     * @name V1DigiworkerDebugConfigUpdate
+     * @summary Put digiworker debug config (tenant admin, tenant-scoped)
+     * @request PUT:/tenant-admin/v1/digiworker/debug-config
+     */
+    v1DigiworkerDebugConfigUpdate: (request: VoTenantAdminDigiworkerDebugConfig, params: RequestParams = {}) =>
+      this.request<BasePinOKVoSimpleOKResponse, BasePinErr>({
+        path: `/tenant-admin/v1/digiworker/debug-config`,
+        method: "PUT",
+        body: request,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
